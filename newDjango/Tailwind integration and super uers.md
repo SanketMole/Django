@@ -30,4 +30,7 @@ run `python manage.py migrate`
 
 ## How to create super user
 Run `python manage.py createsuperuser` - Enter user name (Eg: sanket) - Email address is not compulsary - password. 
+(User: sanket, pass: SSM@123456)
 
+## To change password
+`python manage.py changepassword hitesh`
