@@ -6,4 +6,14 @@ SSM page
 
 {% block content %}
 <h1>All SSM page</h1>
+
+<div class="grid grid-cols-3 gap-4">
+{% for SSM in chais %}
+    <div class="bg-blue-800 p-5 rounded">
+        <img class="rounded shadow-lg" src="{{SSM.image.url}}" alt="">
+        <h3>{{SSM.name}}</h3>
+    </div>
+{% endfor %}
+</div> 
+
 {% endblock %}
