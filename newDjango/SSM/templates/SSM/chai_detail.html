@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Chai Detail page
+{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl">Chai Detail page</h1>
+<div class="flex justify-center items-center h-screen">
+
+    <div class="flex flex-col items-center border-4 border-blue-400  p-4 w-auto max-w-sm bg-yellow-400 text-black rounded">
+        <img src="{{chai.image.url}}" class="max-w-full h-auto object-cover rounded-lg" alt="Image">
+        <h3 class="mt-2 text-lg font-semibold text-center">{{chai.name}}</h3>
+        <p class="mt-2 text-sm text-gray-700 text-center">
+            {{chai.description}}
+        </p>
+        <button class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Click Me</button>
+    </div>
+
+</div>
+
+{% endblock %}

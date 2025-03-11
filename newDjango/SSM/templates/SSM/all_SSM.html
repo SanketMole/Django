@@ -5,13 +5,25 @@ SSM page
 {% endblock %}
 
 {% block content %}
-<h1>All SSM page</h1>
+<h1 class="text-3xl">All SSM page</h1>
 
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-3 gap-4 mt-4">
 {% for SSM in chais %}
     <div class="bg-blue-800 p-5 rounded">
-        <img class="rounded shadow-lg" src="{{SSM.image.url}}" alt="">
-        <h3>{{SSM.name}}</h3>
+        <img class="w-[1400px] h-72 object-cover rounded shadow-lg" src="{{SSM.image.url}}" alt="">
+        <h3 class="text-2xl font-bold">{{SSM.name}}</h3>
+        <a href="{% url 'chai_detail' SSM.id %}">
+            <button
+            type="button"
+            class="inline-flex items-center w-[100%] justify-center px-4 py-2 
+            border border-transparent text-sm font-medium rounded-md
+            text-white bg-orange-600 hover:bg-orange-700
+            focus:outline-none focus:ring-2 focus:ring-offset-2 
+            focus:ring-orange-500"
+            >
+                {{SSM.type}} - {{SSM.id}}
+            </button>
+        </a>
     </div>
 {% endfor %}
 </div> 
