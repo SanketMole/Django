@@ -4,6 +4,7 @@ from .forms import TweetForm, UserRegistrationForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+from django.contrib import messages
 
 
 # Create your views here.
@@ -19,13 +20,23 @@ def tweet_list(request):
 def tweet_create(request):
     if request.method == "POST":
         form = TweetForm(request.POST, request.FILES)
+        text = request.POST.get("text")
+        photo = request.FILES.get("photo")
+
+        if not text or not photo:
+            messages.error(request, "Please provide both text and an image!")  
+            return render(request, 'tweet_form.html', {'form': form})  
+
         if form.is_valid():
             tweet = form.save(commit=False)
             tweet.user = request.user
             tweet.save()
+            messages.success(request, "Tweet created successfully!")  
             return redirect('tweet_list')
+
     else:
         form = TweetForm()
+
     return render(request, 'tweet_form.html', {'form': form})
 
 @login_required

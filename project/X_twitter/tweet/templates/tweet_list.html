@@ -7,11 +7,20 @@ SSM's tweet
 {% block content %}
 <h1 class="text-center mt-4">Welcome to SSM's tweet project</h1>
 
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == "success" %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
 <a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Create a tweet</a>
 <div class="container row gap-3">
     {% for tweet in tweets %}
     <div class="card" style="width: 18rem;">
-        <img src="{{tweet.photo.url}}" class="card-img-top mt-2" alt="Img">
+        <img src="{% if tweet.photo %}{{ tweet.photo.url }}{% else %}https://via.placeholder.com/150{% endif %}" class="card-img-top mt-2" alt="Img">
         <div class="card-body">
           <h5 class="card-title">{{tweet.user.username}}</h5>
           <p class="card-text">{{tweet.text}}</p>
