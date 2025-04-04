@@ -1,0 +1,4 @@
+Shop_Itt superuser:
+Username - client
+Password - 123456789
+
